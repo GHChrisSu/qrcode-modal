@@ -261,8 +261,7 @@ function isIOS() {
   return os ? os.toLowerCase().includes("ios") : false;
 }
 function isMobile() {
-  var os = detectOS();
-  return os ? os.toLowerCase().includes("android") || os.toLowerCase().includes("ios") : false;
+  return false;
 }
 function isNode() {
   var env = detectEnv();
