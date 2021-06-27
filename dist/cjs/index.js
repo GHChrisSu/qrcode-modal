@@ -258,10 +258,12 @@ function detectOS() {
 }
 function isIOS() {
   var os = detectOS();
-  return os ? os.toLowerCase().includes("ios") : false;
+  // return os ? os.toLowerCase().includes("ios") : false;
+  return false;
 }
 function isMobile() {
-  return false;
+  var os = detectOS();
+  return os ? os.toLowerCase().includes("android") || os.toLowerCase().includes("ios") : false;
 }
 function isNode() {
   var env = detectEnv();
@@ -286,7 +288,7 @@ function formatIOSMobile(uri, entry) {
 function saveMobileLinkInfo(data) {
   var focusUri = data.href.split("?")[0];
   setLocal(MOBILE_LINK_LOCALSTORAGE_KEY, Object.assign({}, data,
-    { href: focusUri }));
+    {href: focusUri}));
 }
 
 function getMobileRegistryEntry(name) {
@@ -304,7 +306,7 @@ function getMobileLinkRegistry(qrcodeModalOptions) {
 }
 
 function MobileLinkDisplay(props) {
-  var ios = false;
+  var ios = isIOS();
   var links = getMobileLinkRegistry(props.qrcodeModalOptions);
   var ref = React.useState(false);
   var showMore = ref[0];
@@ -649,7 +651,7 @@ function open$2(uri, cb, qrcodeModalOptions) {
 }
 
 function close$2() {
-  if (isNode()); else {
+  if (isNode()) ; else {
     close$1();
   }
 }
