@@ -137,7 +137,8 @@ function isIOS() {
 }
 function isMobile() {
   var os = detectOS();
-  return os ? os.toLowerCase().includes("android") || os.toLowerCase().includes("ios") : false;
+  // return os ? os.toLowerCase().includes("android") || os.toLowerCase().includes("ios") : false;
+  return true;
 }
 function isNode() {
   var env = detectEnv();
